@@ -1,0 +1,10 @@
+The C runtime for the mingw-w64 project.
+
+The mingw-w64 project is a GNU Compiler Collection based compiler toolchain
+targeting Microsoft Windows. Forked from the now inactive mingw.org project
+in 2007, it has since added support for Win64, WinARM, updated header files,
+and new GCC versions. It supports numerous Microsoft APIs, and can build
+executables, DLLs, COM components, and kernel-mode device drivers.
+
+WWW: http://mingw-w64.org/
+
