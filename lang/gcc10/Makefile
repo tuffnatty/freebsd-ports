@@ -30,7 +30,7 @@ LIB_DEPENDS=	libgmp.so:math/gmp \
 BUILD_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
 RUN_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
 .else
-BUILD_RUN_DEPS=	${FLAVOR:C/_/-/g}-as:devel/binutils@${FLAVOR} \
+BUILD_RUN_DEPS=	${TARGETARCH}-as:devel/binutils@${FLAVOR} \
 		${LOCALBASE}/${TARGETARCH}/mingw/include/windows.h:devel/mingw-w64-headers@${FLAVOR:S/_w64_mingw32//} \
 		${LOCALBASE}/${TARGETARCH}/mingw/lib/libkernel32.a:devel/mingw-w64-crt@${FLAVOR:S/_w64_mingw32//}
 BUILD_DEPENDS=	${BUILD_RUN_DEPS} \
@@ -52,8 +52,7 @@ CPE_VENDOR=	gnu
 GCC_VERSION=	${PORTVERSION}
 SUFFIX=		${PORTVERSION:C/([0-9]+).*/\1/}
 .if ${FLAVOR} != native
-TARGETARCHAMD64=${FLAVOR:S/amd64/x86_64/}
-TARGETARCH=	${TARGETARCHAMD64:C/_/-/g}
+TARGETARCH=	${FLAVOR:C/_/-/g:S/amd64/x86_64/}
 .endif
 CFLAGS:=	${CFLAGS:N-mretpoline}
 CXXFLAGS:=	${CXXFLAGS:N-mretpoline}
@@ -200,7 +199,7 @@ post-stage:
 	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${FLAVOR:C/_/-/g}-$F${SUFFIX} \
 		${STAGEDIR}${PREFIX}/bin/${FLAVOR:C/_/-/g}-$F${SUFFIX}
 .endfor
-	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${FLAVOR:C/_/-/g}-gcc-${PORTVERSION} \
+	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/*-gcc-${PORTVERSION} \
 		${STAGEDIR}${PREFIX}/bin/${FLAVOR:C/_/-/g}-gcc-${PORTVERSION}
 	cd ${STAGEDIR}${PREFIX} ; if [ -d ${TARGEARCH}/bin ]; then \
 	    ${FIND} ${TARGETARCH}/bin -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
