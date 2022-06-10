@@ -97,7 +97,7 @@ CONFIGURE_ARGS+=	--target=${TARGETARCH} \
 			--with-as=${LOCALBASE}/bin/${TARGETARCH}-as \
 			--with-ld=${LOCALBASE}/bin/${TARGETARCH}-ld \
 			--with-sysroot="${INSTALL_BASE}" \
-			--program-prefix=${PKGNAMEPREFIX}
+			--program-prefix=${TARGETARCH}-
 PLIST_SUB+=		IS_NATIVE="@comment "
 INSTALL_BASE=		${PREFIX}/${TARGETARCH}
 GNU_CONFIGURE_PREFIX=	${INSTALL_BASE}
@@ -137,8 +137,8 @@ MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
 USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB+=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
-		PKGNAMEPREFIX=${PKGNAMEPREFIX} \
-		PY_PATH=${FLAVOR:C/_/-/g}/ \
+		EXECUTABLE_PREFIX=${TARGETARCH}- \
+		PY_PATH=${TARGETARCH}/ \
 		SUFFIX=${SUFFIX}
 INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/cppinternals \
@@ -196,12 +196,12 @@ post-stage:
 
 .if ${FLAVOR} != native
 .for F in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gcov gcov-dump gcov-tool gfortran lto-dump
-	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${FLAVOR:C/_/-/g}-$F${SUFFIX} \
-		${STAGEDIR}${PREFIX}/bin/${FLAVOR:C/_/-/g}-$F${SUFFIX}
+	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${TARGETARCH}-$F${SUFFIX} \
+		${STAGEDIR}${PREFIX}/bin/${TARGETARCH}-$F${SUFFIX}
 .endfor
-	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/*-gcc-${PORTVERSION} \
-		${STAGEDIR}${PREFIX}/bin/${FLAVOR:C/_/-/g}-gcc-${PORTVERSION}
-	cd ${STAGEDIR}${PREFIX} ; if [ -d ${TARGEARCH}/bin ]; then \
+	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${TARGETARCH}-gcc-${PORTVERSION} \
+		${STAGEDIR}${PREFIX}/bin/${TARGETARCH}-gcc-${PORTVERSION}
+	cd ${STAGEDIR}${PREFIX} ; if [ -d ${TARGETARCH}/bin ]; then \
 	    ${FIND} ${TARGETARCH}/bin -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
 	fi
 .endif
