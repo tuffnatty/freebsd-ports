@@ -28,6 +28,7 @@
 %%TARGETARCH%%/mingw/lib/gcrt2.o
 %%TARGETARCH%%/mingw/lib/libaclui.a
 %%TARGETARCH%%/mingw/lib/libactiveds.a
+%%TARGETARCH%%/mingw/lib/libadsiid.a
 %%TARGETARCH%%/mingw/lib/libadsldpc.a
 %%TARGETARCH%%/mingw/lib/libadvapi32.a
 %%TARGETARCH%%/mingw/lib/libamstrmid.a
@@ -37,6 +38,7 @@
 %%TARGETARCH%%/mingw/lib/libavifil32.a
 %%TARGETARCH%%/mingw/lib/libavrt.a
 %%TARGETARCH%%/mingw/lib/libbcrypt.a
+%%TARGETARCH%%/mingw/lib/libbits.a
 %%TARGETARCH%%/mingw/lib/libbluetoothapis.a
 %%TARGETARCH%%/mingw/lib/libbootvid.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libbrowcli.a
@@ -52,7 +54,7 @@
 %%TARGETARCH%%/mingw/lib/libcomdlg32.a
 %%TARGETARCH%%/mingw/lib/libconnect.a
 %%TARGETARCH%%/mingw/lib/libcredui.a
-%%TARGETARCH%%/mingw/lib/libcrtdll.a
+%%IS_I686%%%%TARGETARCH%%/mingw/lib/libcrtdll.a
 %%TARGETARCH%%/mingw/lib/libcrypt32.a
 %%TARGETARCH%%/mingw/lib/libcryptnet.a
 %%TARGETARCH%%/mingw/lib/libcryptsp.a
@@ -169,6 +171,8 @@
 %%TARGETARCH%%/mingw/lib/libesent.a
 %%TARGETARCH%%/mingw/lib/libevr.a
 %%TARGETARCH%%/mingw/lib/libfaultrep.a
+%%TARGETARCH%%/mingw/lib/libfeclient.a
+%%TARGETARCH%%/mingw/lib/libfontsub.a
 %%TARGETARCH%%/mingw/lib/libfwpuclnt.a
 %%TARGETARCH%%/mingw/lib/libgdi32.a
 %%TARGETARCH%%/mingw/lib/libgdiplus.a
@@ -209,9 +213,12 @@
 %%TARGETARCH%%/mingw/lib/libmapi32.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libmcd.a
 %%TARGETARCH%%/mingw/lib/libmf.a
+%%TARGETARCH%%/mingw/lib/libmfcore.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libmfcuia32.a
 %%TARGETARCH%%/mingw/lib/libmfplat.a
+%%TARGETARCH%%/mingw/lib/libmfplay.a
 %%TARGETARCH%%/mingw/lib/libmfreadwrite.a
+%%TARGETARCH%%/mingw/lib/libmfsensorgroup.a
 %%TARGETARCH%%/mingw/lib/libmfuuid.a
 %%TARGETARCH%%/mingw/lib/libmgmtapi.a
 %%TARGETARCH%%/mingw/lib/libmincore.a
@@ -242,11 +249,16 @@
 %%TARGETARCH%%/mingw/lib/libmsvcr120.a
 %%TARGETARCH%%/mingw/lib/libmsvcr120_app.a
 %%TARGETARCH%%/mingw/lib/libmsvcr120d.a
+%%IS_I686%%%%TARGETARCH%%/mingw/lib/libmsvcr70.a
+%%IS_I686%%%%TARGETARCH%%/mingw/lib/libmsvcr71.a
 %%TARGETARCH%%/mingw/lib/libmsvcr80.a
 %%TARGETARCH%%/mingw/lib/libmsvcr90.a
 %%TARGETARCH%%/mingw/lib/libmsvcr90d.a
 %%TARGETARCH%%/mingw/lib/libmsvcrt-os.a
 %%TARGETARCH%%/mingw/lib/libmsvcrt.a
+%%IS_I686%%%%TARGETARCH%%/mingw/lib/libmsvcrt10.a
+%%IS_I686%%%%TARGETARCH%%/mingw/lib/libmsvcrt20.a
+%%IS_I686%%%%TARGETARCH%%/mingw/lib/libmsvcrt40.a
 %%TARGETARCH%%/mingw/lib/libmsvfw32.a
 %%TARGETARCH%%/mingw/lib/libmswsock.a
 %%TARGETARCH%%/mingw/lib/libncrypt.a
@@ -264,6 +276,7 @@
 %%TARGETARCH%%/mingw/lib/libntdsapi.a
 %%TARGETARCH%%/mingw/lib/libntmsapi.a
 %%TARGETARCH%%/mingw/lib/libntoskrnl.a
+%%TARGETARCH%%/mingw/lib/libntquery.a
 %%TARGETARCH%%/mingw/lib/libodbc32.a
 %%TARGETARCH%%/mingw/lib/libodbccp32.a
 %%TARGETARCH%%/mingw/lib/libole32.a
@@ -274,10 +287,12 @@
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libolepro32.a
 %%TARGETARCH%%/mingw/lib/libolesvr32.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libolethk32.a
+%%TARGETARCH%%/mingw/lib/libopends60.a
 %%TARGETARCH%%/mingw/lib/libopengl32.a
 %%TARGETARCH%%/mingw/lib/libp2p.a
 %%TARGETARCH%%/mingw/lib/libp2pcollab.a
 %%TARGETARCH%%/mingw/lib/libp2pgraph.a
+%%TARGETARCH%%/mingw/lib/libpathcch.a
 %%TARGETARCH%%/mingw/lib/libpcwum.a
 %%TARGETARCH%%/mingw/lib/libpdh.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libpdhui.a
@@ -289,6 +304,7 @@
 %%TARGETARCH%%/mingw/lib/libpropsys.a
 %%TARGETARCH%%/mingw/lib/libpsapi.a
 %%TARGETARCH%%/mingw/lib/libquartz.a
+%%TARGETARCH%%/mingw/lib/libquery.a
 %%TARGETARCH%%/mingw/lib/libqutil.a
 %%TARGETARCH%%/mingw/lib/libqwave.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/librapi.a
@@ -368,6 +384,7 @@
 %%TARGETARCH%%/mingw/lib/libwdstptc.a
 %%TARGETARCH%%/mingw/lib/libwdsupgcompl.a
 %%TARGETARCH%%/mingw/lib/libwdsutil.a
+%%TARGETARCH%%/mingw/lib/libwebauthn.a
 %%TARGETARCH%%/mingw/lib/libwebsocket.a
 %%TARGETARCH%%/mingw/lib/libwecapi.a
 %%TARGETARCH%%/mingw/lib/libwer.a
@@ -394,6 +411,7 @@
 %%TARGETARCH%%/mingw/lib/libwldap32.a
 %%TARGETARCH%%/mingw/lib/libwmcodecdspuuid.a
 %%TARGETARCH%%/mingw/lib/libwmilib.a
+%%TARGETARCH%%/mingw/lib/libwofutil.a
 %%IS_I686%%%%TARGETARCH%%/mingw/lib/libwow32.a
 %%TARGETARCH%%/mingw/lib/libws2_32.a
 %%TARGETARCH%%/mingw/lib/libwsdapi.a
@@ -480,6 +498,9 @@
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcoadmin.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcolbact.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcompstui.a
+%%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcomputecore.a
+%%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcomputenetwork.a
+%%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcomputestorage.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcomres.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcomsetup.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libcomsnap.a
@@ -529,12 +550,10 @@
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfastprox.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfcachdll.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfdeploy.a
-%%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfeclient.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfilemgmt.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfldrclnr.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfltlib.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfmifs.a
-%%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libfontsub.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libframedyn.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libftpctrs2.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libftpmib.a
@@ -791,7 +810,6 @@
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libpstorsvc.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libqmgr.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libqosname.a
-%%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libquery.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/librasadhlp.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/librasauto.a
 %%IS_AMD64%%%%TARGETARCH%%/mingw/lib/libraschap.a

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	mingw-w64-crt
-DISTNAME=	mingw-w64-v8.0.0
-PORTVERSION=	8.0.0
-PKGNAMEPREFIX=  ${FLAVOR}-
+DISTNAME=	mingw-w64-v10.0.0
+PORTVERSION=	10.0.0
+PKGNAMEPREFIX=	${FLAVOR}-
 CATEGORIES=	devel
 MASTER_SITES=	SF/mingw-w64/mingw-w64/mingw-w64-release
 
@@ -21,7 +21,7 @@ TARGETARCH=	${FLAVOR:S/amd64/x86_64/}-w64-mingw32
 WRKSRC_SUBDIR=	mingw-w64-crt
 
 BUILD_DEPENDS=	${PREFIX}/${TARGETARCH}-bootstrap/bin/${TARGETARCH}-gcc:devel/mingw-w64-gcc-bootstrap@${FLAVOR} \
-		${LOCALBASE}/${FLAVOR:S/amd64/x86_64/}-w64-mingw32/mingw/include/windows.h:devel/mingw-w64-headers@${FLAVOR}
+		${LOCALBASE}/${TARGETARCH}/mingw/include/windows.h:devel/mingw-w64-headers@${FLAVOR}
 SSP_UNSAFE=	yes
 USES=		gmake tar:bz2
 PLIST_SUB+=	TARGETARCH=${TARGETARCH}

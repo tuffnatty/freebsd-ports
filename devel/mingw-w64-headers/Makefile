@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mingw-w64-headers
-DISTNAME=	mingw-w64-v8.0.0
-PORTVERSION=	8.0.0
+DISTNAME=	mingw-w64-v10.0.0
+PORTVERSION=	10.0.0
 CATEGORIES=	devel
 MASTER_SITES=	SF/mingw-w64/mingw-w64/mingw-w64-release
 

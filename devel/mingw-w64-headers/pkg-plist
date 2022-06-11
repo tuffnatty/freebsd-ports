@@ -54,6 +54,7 @@
 %%TARGETARCH%%/mingw/include/adtgen.h
 %%TARGETARCH%%/mingw/include/advpub.h
 %%TARGETARCH%%/mingw/include/af_irda.h
+%%TARGETARCH%%/mingw/include/afunix.h
 %%TARGETARCH%%/mingw/include/afxres.h
 %%TARGETARCH%%/mingw/include/agtctl.h
 %%TARGETARCH%%/mingw/include/agterr.h
@@ -70,6 +71,7 @@
 %%TARGETARCH%%/mingw/include/aqadmtyp.h
 %%TARGETARCH%%/mingw/include/asptlb.h
 %%TARGETARCH%%/mingw/include/assert.h
+%%TARGETARCH%%/mingw/include/asyncinfo.h
 %%TARGETARCH%%/mingw/include/atacct.h
 %%TARGETARCH%%/mingw/include/atalkwsh.h
 %%TARGETARCH%%/mingw/include/atsmedia.h
@@ -104,6 +106,9 @@
 %%TARGETARCH%%/mingw/include/bits.h
 %%TARGETARCH%%/mingw/include/bits1_5.h
 %%TARGETARCH%%/mingw/include/bits2_0.h
+%%TARGETARCH%%/mingw/include/bits2_5.h
+%%TARGETARCH%%/mingw/include/bits3_0.h
+%%TARGETARCH%%/mingw/include/bits5_0.h
 %%TARGETARCH%%/mingw/include/bitscfg.h
 %%TARGETARCH%%/mingw/include/bitsmsg.h
 %%TARGETARCH%%/mingw/include/blberr.h
@@ -174,6 +179,10 @@
 %%TARGETARCH%%/mingw/include/compobj.h
 %%TARGETARCH%%/mingw/include/compressapi.h
 %%TARGETARCH%%/mingw/include/compstui.h
+%%TARGETARCH%%/mingw/include/computecore.h
+%%TARGETARCH%%/mingw/include/computedefs.h
+%%TARGETARCH%%/mingw/include/computenetwork.h
+%%TARGETARCH%%/mingw/include/computestorage.h
 %%TARGETARCH%%/mingw/include/comsvcs.h
 %%TARGETARCH%%/mingw/include/comutil.h
 %%TARGETARCH%%/mingw/include/concurrencysal.h
@@ -223,9 +232,11 @@
 %%TARGETARCH%%/mingw/include/d3d11_2.h
 %%TARGETARCH%%/mingw/include/d3d11_3.h
 %%TARGETARCH%%/mingw/include/d3d11_4.h
+%%TARGETARCH%%/mingw/include/d3d11on12.h
 %%TARGETARCH%%/mingw/include/d3d11sdklayers.h
 %%TARGETARCH%%/mingw/include/d3d11shader.h
 %%TARGETARCH%%/mingw/include/d3d12.h
+%%TARGETARCH%%/mingw/include/d3d12sdklayers.h
 %%TARGETARCH%%/mingw/include/d3d12shader.h
 %%TARGETARCH%%/mingw/include/d3d8.h
 %%TARGETARCH%%/mingw/include/d3d8caps.h
@@ -277,6 +288,7 @@
 %%TARGETARCH%%/mingw/include/ddk/acpiioct.h
 %%TARGETARCH%%/mingw/include/ddk/afilter.h
 %%TARGETARCH%%/mingw/include/ddk/amtvuids.h
+%%TARGETARCH%%/mingw/include/ddk/ata.h
 %%TARGETARCH%%/mingw/include/ddk/atm.h
 %%TARGETARCH%%/mingw/include/ddk/bdasup.h
 %%TARGETARCH%%/mingw/include/ddk/classpnp.h
@@ -377,8 +389,11 @@
 %%TARGETARCH%%/mingw/include/dinputd.h
 %%TARGETARCH%%/mingw/include/dir.h
 %%TARGETARCH%%/mingw/include/direct.h
+%%TARGETARCH%%/mingw/include/directmanipulation.h
+%%TARGETARCH%%/mingw/include/directxmath.h
 %%TARGETARCH%%/mingw/include/dirent.h
 %%TARGETARCH%%/mingw/include/diskguid.h
+%%TARGETARCH%%/mingw/include/dismapi.h
 %%TARGETARCH%%/mingw/include/dispatch.h
 %%TARGETARCH%%/mingw/include/dispatcherqueue.h
 %%TARGETARCH%%/mingw/include/dispdib.h
@@ -472,6 +487,7 @@
 %%TARGETARCH%%/mingw/include/eh.h
 %%TARGETARCH%%/mingw/include/ehstorapi.h
 %%TARGETARCH%%/mingw/include/elscore.h
+%%TARGETARCH%%/mingw/include/elssrvc.h
 %%TARGETARCH%%/mingw/include/emostore.h
 %%TARGETARCH%%/mingw/include/emptyvc.h
 %%TARGETARCH%%/mingw/include/endpointvolume.h
@@ -484,6 +500,7 @@
 %%TARGETARCH%%/mingw/include/evcode.h
 %%TARGETARCH%%/mingw/include/evcoll.h
 %%TARGETARCH%%/mingw/include/eventsys.h
+%%TARGETARCH%%/mingw/include/eventtoken.h
 %%TARGETARCH%%/mingw/include/evntcons.h
 %%TARGETARCH%%/mingw/include/evntprov.h
 %%TARGETARCH%%/mingw/include/evntrace.h
@@ -512,6 +529,7 @@
 %%TARGETARCH%%/mingw/include/fltuserstructures.h
 %%TARGETARCH%%/mingw/include/fltwinerror.h
 %%TARGETARCH%%/mingw/include/font.dlg
+%%TARGETARCH%%/mingw/include/fontsub.h
 %%TARGETARCH%%/mingw/include/fpieee.h
 %%TARGETARCH%%/mingw/include/fsrm.h
 %%TARGETARCH%%/mingw/include/fsrmenums.h
@@ -638,6 +656,7 @@
 %%TARGETARCH%%/mingw/include/io.h
 %%TARGETARCH%%/mingw/include/ioapiset.h
 %%TARGETARCH%%/mingw/include/ioevent.h
+%%TARGETARCH%%/mingw/include/ioringapi.h
 %%TARGETARCH%%/mingw/include/ipexport.h
 %%TARGETARCH%%/mingw/include/iphlpapi.h
 %%TARGETARCH%%/mingw/include/ipifcons.h
@@ -744,8 +763,11 @@
 %%TARGETARCH%%/mingw/include/memoryapi.h
 %%TARGETARCH%%/mingw/include/mergemod.h
 %%TARGETARCH%%/mingw/include/mfapi.h
+%%TARGETARCH%%/mingw/include/mfcaptureengine.h
+%%TARGETARCH%%/mingw/include/mfd3d12.h
 %%TARGETARCH%%/mingw/include/mferror.h
 %%TARGETARCH%%/mingw/include/mfidl.h
+%%TARGETARCH%%/mingw/include/mfmediacapture.h
 %%TARGETARCH%%/mingw/include/mfmp2dlna.h
 %%TARGETARCH%%/mingw/include/mfobjects.h
 %%TARGETARCH%%/mingw/include/mfplay.h
@@ -762,6 +784,7 @@
 %%TARGETARCH%%/mingw/include/mlang.h
 %%TARGETARCH%%/mingw/include/mmc.h
 %%TARGETARCH%%/mingw/include/mmcobj.h
+%%TARGETARCH%%/mingw/include/mmddk.h
 %%TARGETARCH%%/mingw/include/mmdeviceapi.h
 %%TARGETARCH%%/mingw/include/mmreg.h
 %%TARGETARCH%%/mingw/include/mmstream.h
@@ -925,6 +948,7 @@
 %%TARGETARCH%%/mingw/include/ntdsbmsg.h
 %%TARGETARCH%%/mingw/include/ntgdi.h
 %%TARGETARCH%%/mingw/include/ntiologc.h
+%%TARGETARCH%%/mingw/include/ntioring_x.h
 %%TARGETARCH%%/mingw/include/ntldap.h
 %%TARGETARCH%%/mingw/include/ntmsapi.h
 %%TARGETARCH%%/mingw/include/ntmsmli.h
@@ -934,6 +958,7 @@
 %%TARGETARCH%%/mingw/include/ntsecpkg.h
 %%TARGETARCH%%/mingw/include/ntstatus.h
 %%TARGETARCH%%/mingw/include/ntverp.h
+%%TARGETARCH%%/mingw/include/nvme.h
 %%TARGETARCH%%/mingw/include/oaidl.h
 %%TARGETARCH%%/mingw/include/objbase.h
 %%TARGETARCH%%/mingw/include/objectarray.h
@@ -1002,6 +1027,7 @@
 %%TARGETARCH%%/mingw/include/profile.h
 %%TARGETARCH%%/mingw/include/profileapi.h
 %%TARGETARCH%%/mingw/include/profinfo.h
+%%TARGETARCH%%/mingw/include/proofofpossessioncookieinfo.h
 %%TARGETARCH%%/mingw/include/propidl.h
 %%TARGETARCH%%/mingw/include/propkey.h
 %%TARGETARCH%%/mingw/include/propkeydef.h
@@ -1054,6 +1080,7 @@
 %%TARGETARCH%%/mingw/include/reconcil.h
 %%TARGETARCH%%/mingw/include/regbag.h
 %%TARGETARCH%%/mingw/include/regstr.h
+%%TARGETARCH%%/mingw/include/relogger.h
 %%TARGETARCH%%/mingw/include/rend.h
 %%TARGETARCH%%/mingw/include/resapi.h
 %%TARGETARCH%%/mingw/include/restartmanager.h
@@ -1082,6 +1109,7 @@
 %%TARGETARCH%%/mingw/include/rtm.h
 %%TARGETARCH%%/mingw/include/rtmv2.h
 %%TARGETARCH%%/mingw/include/rtutils.h
+%%TARGETARCH%%/mingw/include/rtworkq.h
 %%TARGETARCH%%/mingw/include/sal.h
 %%TARGETARCH%%/mingw/include/sapi.h
 %%TARGETARCH%%/mingw/include/sapi51.h
@@ -1164,7 +1192,9 @@
 %%TARGETARCH%%/mingw/include/snmp.h
 %%TARGETARCH%%/mingw/include/softpub.h
 %%TARGETARCH%%/mingw/include/spatialaudioclient.h
+%%TARGETARCH%%/mingw/include/spatialaudiometadata.h
 %%TARGETARCH%%/mingw/include/specstrings.h
+%%TARGETARCH%%/mingw/include/spellcheck.h
 %%TARGETARCH%%/mingw/include/sperror.h
 %%TARGETARCH%%/mingw/include/sphelper.h
 %%TARGETARCH%%/mingw/include/sporder.h
@@ -1246,6 +1276,7 @@
 %%TARGETARCH%%/mingw/include/threadpoollegacyapiset.h
 %%TARGETARCH%%/mingw/include/thumbcache.h
 %%TARGETARCH%%/mingw/include/time.h
+%%TARGETARCH%%/mingw/include/timeapi.h
 %%TARGETARCH%%/mingw/include/timeprov.h
 %%TARGETARCH%%/mingw/include/timezoneapi.h
 %%TARGETARCH%%/mingw/include/tlbref.h
@@ -1264,6 +1295,7 @@
 %%TARGETARCH%%/mingw/include/tspi.h
 %%TARGETARCH%%/mingw/include/tssbx.h
 %%TARGETARCH%%/mingw/include/tsuserex.h
+%%TARGETARCH%%/mingw/include/tsvirtualchannels.h
 %%TARGETARCH%%/mingw/include/tuner.h
 %%TARGETARCH%%/mingw/include/tvout.h
 %%TARGETARCH%%/mingw/include/txcoord.h
@@ -1318,6 +1350,7 @@
 %%TARGETARCH%%/mingw/include/virtdisk.h
 %%TARGETARCH%%/mingw/include/vmr9.h
 %%TARGETARCH%%/mingw/include/vsadmin.h
+%%TARGETARCH%%/mingw/include/vsanimation.h
 %%TARGETARCH%%/mingw/include/vsbackup.h
 %%TARGETARCH%%/mingw/include/vsmgmt.h
 %%TARGETARCH%%/mingw/include/vsprov.h
@@ -1353,6 +1386,7 @@
 %%TARGETARCH%%/mingw/include/wdstci.h
 %%TARGETARCH%%/mingw/include/wdstpdi.h
 %%TARGETARCH%%/mingw/include/wdstptmgmt.h
+%%TARGETARCH%%/mingw/include/webauthn.h
 %%TARGETARCH%%/mingw/include/werapi.h
 %%TARGETARCH%%/mingw/include/wfext.h
 %%TARGETARCH%%/mingw/include/wia.h
@@ -1373,13 +1407,17 @@
 %%TARGETARCH%%/mingw/include/windef.h
 %%TARGETARCH%%/mingw/include/windns.h
 %%TARGETARCH%%/mingw/include/windot11.h
+%%TARGETARCH%%/mingw/include/windows.foundation.collections.h
 %%TARGETARCH%%/mingw/include/windows.foundation.h
 %%TARGETARCH%%/mingw/include/windows.h
+%%TARGETARCH%%/mingw/include/windows.media.h
+%%TARGETARCH%%/mingw/include/windows.media.speechsynthesis.h
 %%TARGETARCH%%/mingw/include/windows.security.cryptography.h
 %%TARGETARCH%%/mingw/include/windows.storage.h
 %%TARGETARCH%%/mingw/include/windows.storage.streams.h
 %%TARGETARCH%%/mingw/include/windows.system.h
 %%TARGETARCH%%/mingw/include/windows.system.threading.h
+%%TARGETARCH%%/mingw/include/windowscontracts.h
 %%TARGETARCH%%/mingw/include/windowsx.h
 %%TARGETARCH%%/mingw/include/windowsx.h16
 %%TARGETARCH%%/mingw/include/winefs.h
@@ -1434,8 +1472,14 @@
 %%TARGETARCH%%/mingw/include/wmiatlprov.h
 %%TARGETARCH%%/mingw/include/wmistr.h
 %%TARGETARCH%%/mingw/include/wmiutils.h
+%%TARGETARCH%%/mingw/include/wmp.h
+%%TARGETARCH%%/mingw/include/wmpids.h
+%%TARGETARCH%%/mingw/include/wmprealestate.h
+%%TARGETARCH%%/mingw/include/wmpservices.h
 %%TARGETARCH%%/mingw/include/wmsbuffer.h
+%%TARGETARCH%%/mingw/include/wmsdk.h
 %%TARGETARCH%%/mingw/include/wmsdkidl.h
+%%TARGETARCH%%/mingw/include/wmsecure.h
 %%TARGETARCH%%/mingw/include/wnnc.h
 %%TARGETARCH%%/mingw/include/wow64apiset.h
 %%TARGETARCH%%/mingw/include/wownt16.h
@@ -1486,6 +1530,8 @@
 %%TARGETARCH%%/mingw/include/wtsapi32.h
 %%TARGETARCH%%/mingw/include/wtypes.h
 %%TARGETARCH%%/mingw/include/wtypesbase.h
+%%TARGETARCH%%/mingw/include/wuapi.h
+%%TARGETARCH%%/mingw/include/wuerror.h
 %%TARGETARCH%%/mingw/include/xa.h
 %%TARGETARCH%%/mingw/include/xapo.h
 %%TARGETARCH%%/mingw/include/xapofx.h
