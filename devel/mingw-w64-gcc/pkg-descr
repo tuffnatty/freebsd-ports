@@ -1,0 +1,9 @@
+GCC, the GNU Compiler Collection, supports a number of languages.  This
+port pulls in the default MinGW-w64 cross-compiler version of GCC in the
+Ports Collection, and defines symlinks called x86_64-w64-mingw32-gcc,
+x86_64-w64-mingw32-g++, x86_64-w64-mingw32-gfortran, i686-w64-mingw32-gcc,
+i686-w64-mingw32-g++, and i686-w64-mingw32-gfortran.
+
+WWW: https://gcc.gnu.org
+
+Gerald Pfeifer <gerald@FreeBSD.org>
