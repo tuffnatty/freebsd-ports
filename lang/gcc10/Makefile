@@ -177,6 +177,12 @@ full-regression-test: build
 	; ${WRKSRC}/contrib/test_summary
 .endif
 
+.if ${FLAVOR} != native
+DIRS_FOR_PLIST=        ${INSTALL_BASE:S/^${PREFIX}\///}/lib ${TARGLIB32:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.else
+DIRS_FOR_PLIST=        ${TARGLIB:S/^${PREFIX}\///} ${TARGLIB32:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.endif
+
 post-stage:
 	${RM} ${STAGEDIR}${INSTALL_BASE}/man/man7/*
 	${RM} -r ${STAGEDIR}${TARGLIB}/gcc/*/${GCC_VERSION}/include-fixed/
@@ -188,7 +194,11 @@ post-stage:
 	${MV} ${STAGEDIR}${INSTALL_BASE}/lib/lib32 ${STAGEDIR}${TARGLIB32}/gcc${SUFFIX}
 .endif
 
-.for d in ${TARGLIB:S/^${PREFIX}\///} ${TARGLIB32:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.if ${FLAVOR} != native
+	${MV} ${STAGEDIR}${INSTALL_BASE}/${TARGETARCH}/lib/* ${STAGEDIR}${INSTALL_BASE}/lib/
+.endif
+
+.for d in ${DIRS_FOR_PLIST}
 	cd ${STAGEDIR}${PREFIX} ; if [ -d $d ]; then \
 	    ${FIND} $d -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
 	fi
