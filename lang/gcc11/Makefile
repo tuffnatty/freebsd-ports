@@ -5,8 +5,18 @@ CATEGORIES=	lang
 MASTER_SITES=	GCC
 PKGNAMESUFFIX=	${SUFFIX}
 
+FLAVORS=	native i686_w64_mingw32 amd64_w64_mingw32
+FLAVOR?=	${FLAVORS:[1]}
+
+.if ${FLAVOR} != native
+PKGNAMEPREFIX=	${FLAVOR:C/_/-/g}-
+.endif
+
 MAINTAINER=	salvadore@FreeBSD.org
 COMMENT=	GNU Compiler Collection 11
+.if ${FLAVOR} != native
+COMMENT=	GNU Compiler Collection 11 targeting ${FLAVOR}
+.endif
 WWW=		https://gcc.gnu.org
 
 LICENSE=	GPLv3 GPLv3RLE
@@ -17,8 +27,17 @@ ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 armv7 i386 powerpc powerpc64 powerpc64le
 LIB_DEPENDS=	libgmp.so:math/gmp \
 		libmpfr.so:math/mpfr \
 		libmpc.so:math/mpc
+.if ${FLAVOR} == native
 BUILD_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
 RUN_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
+.else
+BUILD_RUN_DEPS=	${TARGETARCH}-as:devel/binutils@${FLAVOR} \
+		${LOCALBASE}/${TARGETARCH}/mingw/include/windows.h:devel/mingw-w64-headers@${FLAVOR:S/_w64_mingw32//} \
+		${LOCALBASE}/${TARGETARCH}/mingw/lib/libkernel32.a:devel/mingw-w64-crt@${FLAVOR:S/_w64_mingw32//}
+BUILD_DEPENDS=	${BUILD_RUN_DEPS} \
+		objdump:devel/binutils
+RUN_DEPENDS=	${BUILD_RUN_DEPS}
+.endif
 .if defined(MAINTAINER_MODE)
 BUILD_DEPENDS+=	runtest:misc/dejagnu
 .endif
@@ -33,6 +52,9 @@ CPE_VENDOR=	gnu
 
 GCC_VERSION=	${PORTVERSION}
 SUFFIX=		${PORTVERSION:C/([0-9]+).*/\1/}
+.if ${FLAVOR} != native
+TARGETARCH=	${FLAVOR:C/_/-/g:S/amd64/x86_64/}
+.endif
 CFLAGS:=	${CFLAGS:N-mretpoline}
 CXXFLAGS:=	${CXXFLAGS:N-mretpoline}
 
@@ -49,7 +71,7 @@ OPTIONS_RADIO_BOOTSTRAP=	LTO_BOOTSTRAP STANDARD_BOOTSTRAP
 LTO_BOOTSTRAP_DESC=	Build using a full LTO bootstrap
 STANDARD_BOOTSTRAP_DESC=	Build using a full bootstrap without LTO
 
-.if exists(/usr/lib32/libc.so)
+.if ${FLAVOR} == native && exists(/usr/lib32/libc.so)
 OPTIONS_DEFINE_amd64+=		MULTILIB
 OPTIONS_DEFAULT_amd64+=	MULTILIB
 OPTIONS_DEFINE_powerpc64+=	MULTILIB
@@ -69,20 +91,40 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_ARGS+=	--with-abi=elfv2
 .endif
 
-LANGUAGES:=	c,c++,objc,fortran,jit
-TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
-TARGLIB32=	${PREFIX}/lib32	# The version information is added later
-LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
+.if ${FLAVOR} == native
+CONFIGURE_ARGS+=	--with-as=${LOCALBASE}/bin/as \
+			--with-ld=${LOCALBASE}/bin/ld
+PLIST_SUB+=		IS_NATIVE=""
+INSTALL_BASE=		${PREFIX}
+.else
+CONFIGURE_ARGS+=	--target=${TARGETARCH} \
+			--with-as=${LOCALBASE}/bin/${TARGETARCH}-as \
+			--with-ld=${LOCALBASE}/bin/${TARGETARCH}-ld \
+			--with-sysroot="${INSTALL_BASE}" \
+			--program-prefix=${TARGETARCH}-
+PLIST_SUB+=		IS_NATIVE="@comment "
+INSTALL_BASE=		${PREFIX}/${TARGETARCH}
+GNU_CONFIGURE_PREFIX=	${INSTALL_BASE}
+.endif
+
+LANGUAGES:=	c,c++,objc,fortran
+TARGLIB=	${INSTALL_BASE}/lib/gcc${SUFFIX}
+TARGLIB32=	${INSTALL_BASE}/lib32	# The version information is added later
+LIBEXEC=	${INSTALL_BASE}/libexec/gcc${SUFFIX}
 GNU_CONFIGURE=	yes
 CONFIGURE_OUTSOURCE=	yes
 .if empty(PORT_OPTIONS:M*BOOTSTRAP)
 CONFIGURE_ARGS+=--disable-bootstrap
-.elif ${PORT_OPTIONS:MLTO_BOOTSTRAP}
+.elif ${FLAVOR} == native
+.if ${PORT_OPTIONS:MLTO_BOOTSTRAP}
 CONFIGURE_ARGS+=--with-build-config=bootstrap-lto-noplugin
 ALL_TARGET=	bootstrap-lean
 .else
 CONFIGURE_ARGS+=--with-build-config=bootstrap-debug
 ALL_TARGET=	bootstrap-lean
+.endif
+.else
+CONFIGURE_ARGS+=--disable-bootstrap
 .endif
 INSTALL_TARGET=	install-strip
 .if ${UID} != 0
@@ -95,11 +137,9 @@ CONFIGURE_ARGS+=--disable-nls \
 		--libdir=${TARGLIB} \
 		--libexecdir=${LIBEXEC} \
 		--program-suffix=${SUFFIX} \
-		--with-as=${LOCALBASE}/bin/as \
 		--with-gmp=${LOCALBASE} \
 		--with-gxx-include-dir=${TARGLIB}/include/c++/ \
 		--with-gxx-libcxx-include-dir=/usr/include/c++/v1 \
-		--with-ld=${LOCALBASE}/bin/ld \
 		${ICONV_CONFIGURE_ARG} \
 		--with-pkgversion="FreeBSD Ports Collection" \
 		--with-system-zlib \
@@ -108,6 +148,8 @@ MAKE_ARGS+=	MAKEINFOFLAGS="--no-split"
 USE_LDCONFIG=	${TARGLIB}
 PLIST_SUB+=	GCC_VERSION=${GCC_VERSION} \
 		GNU_HOST=${CONFIGURE_TARGET} \
+		EXECUTABLE_PREFIX=${TARGETARCH}- \
+		PY_PATH=${TARGETARCH}/ \
 		SUFFIX=${SUFFIX}
 INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/cppinternals \
@@ -115,11 +157,15 @@ INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/gccinstall \
 		gcc${SUFFIX}/gccint \
 		gcc${SUFFIX}/gfortran \
-		gcc${SUFFIX}/libgccjit \
-		gcc${SUFFIX}/libgomp
+		gcc${SUFFIX}/libgccjit
+.if ${FLAVOR} == native
+INFO+=		gcc${SUFFIX}/libgomp
+.endif
 # Release tarballs (as opposed to snapshots) always carry this.
-INFO+=		gcc${SUFFIX}/libquadmath \
-		gcc${SUFFIX}/libitm
+INFO+=		gcc${SUFFIX}/libquadmath
+.if ${FLAVOR} == native
+INFO+=		gcc${SUFFIX}/libitm
+.endif
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
 
@@ -143,22 +189,45 @@ full-regression-test: build
 	; ${WRKSRC}/contrib/test_summary
 .endif
 
+.if ${FLAVOR} != native
+DIRS_FOR_PLIST=        ${INSTALL_BASE:S/^${PREFIX}\///}/lib ${TARGLIB32:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.else
+DIRS_FOR_PLIST=        ${TARGLIB:S/^${PREFIX}\///} ${TARGLIB32:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.endif
+
 post-stage:
-	${RM} ${STAGEDIR}${PREFIX}/man/man7/*
+	${RM} ${STAGEDIR}${INSTALL_BASE}/man/man7/*
 	${RM} -r ${STAGEDIR}${TARGLIB}/gcc/*/${GCC_VERSION}/include-fixed/
 	# Add target libraries and include files to packaging list.
 	${RM} ${WRKDIR}/PLIST.lib
 
 .if (${ARCH} == amd64 || ${ARCH} == powerpc64) && ${PORT_OPTIONS:MMULTILIB}
 	${MKDIR} ${STAGEDIR}${TARGLIB32}
-	${MV} ${STAGEDIR}${PREFIX}/lib/lib32 ${STAGEDIR}${TARGLIB32}/gcc${SUFFIX}
+	${MV} ${STAGEDIR}${INSTALL_BASE}/lib/lib32 ${STAGEDIR}${TARGLIB32}/gcc${SUFFIX}
 .endif
 
-.for d in ${TARGLIB:S/^${PREFIX}\///} ${TARGLIB32:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///}
+.if ${FLAVOR} != native
+	${MV} ${STAGEDIR}${INSTALL_BASE}/${TARGETARCH}/lib/* ${STAGEDIR}${INSTALL_BASE}/lib/
+.endif
+
+.for d in ${DIRS_FOR_PLIST}
 	cd ${STAGEDIR}${PREFIX} ; if [ -d $d ]; then \
 	    ${FIND} $d -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
 	fi
 .endfor
+
+.if ${FLAVOR} != native
+.for F in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gcov gcov-dump gcov-tool gfortran lto-dump
+	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${TARGETARCH}-$F${SUFFIX} \
+		${STAGEDIR}${PREFIX}/bin/${TARGETARCH}-$F${SUFFIX}
+.endfor
+	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${TARGETARCH}-gcc-${PORTVERSION} \
+		${STAGEDIR}${PREFIX}/bin/${TARGETARCH}-gcc-${PORTVERSION}
+	cd ${STAGEDIR}${PREFIX} ; if [ -d ${TARGETARCH}/bin ]; then \
+	    ${FIND} ${TARGETARCH}/bin -type f -o -type l >>${WRKDIR}/PLIST.lib ;\
+	fi
+.endif
+
 	cd ${WRKDIR} ; ${SED} -i -e "/PLIST.lib/ r PLIST.lib" ${TMPPLIST}
 
 .include <bsd.port.post.mk>
