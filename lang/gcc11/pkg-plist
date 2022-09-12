@@ -13,9 +13,9 @@ bin/%%EXECUTABLE_PREFIX%%gcc%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%gcc-ar%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%gcc-nm%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%gcc-ranlib%%SUFFIX%%
-bin/%%EXECUTABLE_PREFIX%%gcov%%SUFFIX%%
-bin/%%EXECUTABLE_PREFIX%%gcov-dump%%SUFFIX%%
-bin/%%EXECUTABLE_PREFIX%%gcov-tool%%SUFFIX%%
+%%IS_NATIVE%%bin/%%EXECUTABLE_PREFIX%%gcov%%SUFFIX%%
+%%IS_NATIVE%%bin/%%EXECUTABLE_PREFIX%%gcov-dump%%SUFFIX%%
+%%IS_NATIVE%%bin/%%EXECUTABLE_PREFIX%%gcov-tool%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%gfortran%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%lto-dump%%SUFFIX%%
 %%PY_PATH%%include/libgccjit++.h
@@ -23,9 +23,9 @@ bin/%%EXECUTABLE_PREFIX%%lto-dump%%SUFFIX%%
 man/man1/%%EXECUTABLE_PREFIX%%cpp%%SUFFIX%%.1.gz
 man/man1/%%EXECUTABLE_PREFIX%%g++%%SUFFIX%%.1.gz
 man/man1/%%EXECUTABLE_PREFIX%%gcc%%SUFFIX%%.1.gz
-man/man1/%%EXECUTABLE_PREFIX%%gcov%%SUFFIX%%.1.gz
-man/man1/%%EXECUTABLE_PREFIX%%gcov-dump%%SUFFIX%%.1.gz
-man/man1/%%EXECUTABLE_PREFIX%%gcov-tool%%SUFFIX%%.1.gz
+%%IS_NATIVE%%man/man1/%%EXECUTABLE_PREFIX%%gcov%%SUFFIX%%.1.gz
+%%IS_NATIVE%%man/man1/%%EXECUTABLE_PREFIX%%gcov-dump%%SUFFIX%%.1.gz
+%%IS_NATIVE%%man/man1/%%EXECUTABLE_PREFIX%%gcov-tool%%SUFFIX%%.1.gz
 man/man1/%%EXECUTABLE_PREFIX%%gfortran%%SUFFIX%%.1.gz
 man/man1/%%EXECUTABLE_PREFIX%%lto-dump%%SUFFIX%%.1.gz
 %%PY_PATH%%share/gcc-%%GCC_VERSION%%/python/libstdcxx/__init__.py

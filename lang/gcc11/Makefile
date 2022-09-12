@@ -102,6 +102,10 @@ CONFIGURE_ARGS+=	--target=${TARGETARCH} \
 			--with-ld=${LOCALBASE}/bin/${TARGETARCH}-ld \
 			--with-sysroot="${INSTALL_BASE}" \
 			--program-prefix=${TARGETARCH}-
+
+# Workaround for https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100289
+CONFIGURE_ARGS+=	--disable-gcov
+
 PLIST_SUB+=		IS_NATIVE="@comment "
 INSTALL_BASE=		${PREFIX}/${TARGETARCH}
 GNU_CONFIGURE_PREFIX=	${INSTALL_BASE}
@@ -217,7 +221,7 @@ post-stage:
 .endfor
 
 .if ${FLAVOR} != native
-.for F in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gcov gcov-dump gcov-tool gfortran lto-dump
+.for F in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran lto-dump
 	${RLN} ${STAGEDIR}${INSTALL_BASE}/bin/${TARGETARCH}-$F${SUFFIX} \
 		${STAGEDIR}${PREFIX}/bin/${TARGETARCH}-$F${SUFFIX}
 .endfor

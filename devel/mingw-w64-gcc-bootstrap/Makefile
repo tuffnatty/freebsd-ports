@@ -52,6 +52,7 @@ CONFIGURE_ARGS+=--target=${TARGETARCH} --disable-nls --enable-languages=c,lto \
 		--enable-static \
 		--enable-lto \
 		--disable-dw2-exceptions \
+		--disable-gcov \
 		--enable-version-specific-runtime-libs \
 		--disable-multilib
 
