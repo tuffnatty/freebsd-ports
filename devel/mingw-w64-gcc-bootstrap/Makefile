@@ -62,9 +62,9 @@ INSTALL_TARGET=	install-gcc
 
 post-patch:
 	@${REINPLACE_CMD} -e '/LIBSTDCXX/ s/stdc\+\+/c\+\+/g ' \
-		${WRKSRC}//gcc/cp/g++spec.c
+		${WRKSRC}/gcc/cp/g++spec.c
 	@${REINPLACE_CMD} -e '/LOCAL_INCLUDE_DIR/ d ' \
-		${WRKSRC}//gcc/Makefile.in
+		${WRKSRC}/gcc/Makefile.in
 
 post-stage:
 	@${RM} ${STAGEDIR}${GNU_CONFIGURE_PREFIX}/bin/${TARGETARCH}-${TARGETARCH}-*
