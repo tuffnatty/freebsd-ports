@@ -18,8 +18,8 @@ bin/%%EXECUTABLE_PREFIX%%gcc-ranlib%%SUFFIX%%
 %%IS_NATIVE%%bin/%%EXECUTABLE_PREFIX%%gcov-tool%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%gfortran%%SUFFIX%%
 bin/%%EXECUTABLE_PREFIX%%lto-dump%%SUFFIX%%
-%%PY_PATH%%include/libgccjit++.h
-%%PY_PATH%%include/libgccjit.h
+%%IS_NATIVE%%%%PY_PATH%%include/libgccjit++.h
+%%IS_NATIVE%%%%PY_PATH%%include/libgccjit.h
 man/man1/%%EXECUTABLE_PREFIX%%cpp%%SUFFIX%%.1.gz
 man/man1/%%EXECUTABLE_PREFIX%%g++%%SUFFIX%%.1.gz
 man/man1/%%EXECUTABLE_PREFIX%%gcc%%SUFFIX%%.1.gz
