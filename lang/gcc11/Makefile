@@ -155,20 +155,18 @@ PLIST_SUB+=	GCC_VERSION=${GCC_VERSION} \
 		EXECUTABLE_PREFIX=${TARGETARCH}- \
 		PY_PATH=${TARGETARCH}/ \
 		SUFFIX=${SUFFIX}
+.if ${FLAVOR} == native
 INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/cppinternals \
 		gcc${SUFFIX}/gcc \
 		gcc${SUFFIX}/gccinstall \
 		gcc${SUFFIX}/gccint \
 		gcc${SUFFIX}/gfortran \
-		gcc${SUFFIX}/libgccjit
-.if ${FLAVOR} == native
-INFO+=		gcc${SUFFIX}/libgomp
-.endif
+		gcc${SUFFIX}/libgccjit \
+		gcc${SUFFIX}/libgomp
 # Release tarballs (as opposed to snapshots) always carry this.
-INFO+=		gcc${SUFFIX}/libquadmath
-.if ${FLAVOR} == native
-INFO+=		gcc${SUFFIX}/libitm
+INFO+=		gcc${SUFFIX}/libquadmath \
+		gcc${SUFFIX}/libitm
 .endif
 SUB_FILES=	pkg-message
 SUB_LIST+=	TARGLIB=${TARGLIB}
