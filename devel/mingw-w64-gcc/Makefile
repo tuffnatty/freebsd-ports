@@ -3,7 +3,7 @@
 
 PORTNAME=	gcc
 PORTVERSION=	${GCC_DEFAULT}
-CATEGORIES=	lang
+CATEGORIES=	devel
 MASTER_SITES=	# not applicable
 DISTFILES=	# not applicable
 PKGNAMEPREFIX=	${FLAVOR}-mingw-w64-
